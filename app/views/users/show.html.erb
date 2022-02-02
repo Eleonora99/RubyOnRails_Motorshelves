@@ -1,0 +1,155 @@
+
+
+<% if user_signed_in? %>
+
+    <head>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Righteous&display=swap');
+      .container{
+        margin-top:2%;
+        padding:10%;
+        border-radius:10px;
+        background-image: url(<%= asset_path "background.jpg"%>);
+        background-size: cover;
+        opacity:77%;
+        color:red;
+        text-decoration: none;
+        text-align: center;
+        font-family: 'Righteous', cursive;
+      }
+      nav{
+          margin-bottom:15%;
+          margin-top:-20%;
+          margin-left:95%;
+        
+      }
+      .d-grid .d-inline-block{
+          margin-top:5%;
+      }
+        </style>
+        <title>Motorshelves - Login</title>
+    </head>
+    <body style=" background-image: url(<%= asset_path '2.jpeg' =%>);background-size: cover;">
+     <div class="container">
+        <nav class="navbar">
+                <div class="btn-group", style="float: right; width: 300px; padding-top: 3%; margin-right: 3%;">
+                    <%= link_to 'Logout',destroy_user_session_path, :method => :delete ,
+                            role: "button", class: "btn btn-warning text-nowrap"%>
+                    <%= link_to "Delete Account", user_path(@user.id), method: :delete, data: { confirm: "Are you sure?" },
+                            role: "button", class: "btn btn-danger text-nowrap"%>
+                </div>
+          
+          </nav>
+     
+        
+           
+                    <div class="col-12 text-center">
+                        <h1 class="font-weight-light">Motorshelves -find your ride-</h1>
+                        <p class="lead">Homepage</p>
+                    </div>
+                <div class="d-grid gap-2 text-center mx-auto">
+                    <div class="d-inline-block gap-2">
+                         <% if can? :findadv, Bikeadv %>
+                            <%= link_to 'Look for a new Bike', findadv_user_bikeadvs_path(@user.id),
+                            role: "button", class: "btn btn-lg btn-primary text-nowrap col-5", style: "border:2px solid rgba(0,0,0,0.2);
+                            border-radius:12px;
+                            background-color: red;
+                            border-bottom-color:black;
+                            background-image: red;
+                            text-decoration: none;
+                            color:aliceblue;
+                            font-size: medium;;
+                            border-color: black;
+                            margin-right:5%"%>
+                        <% end %>
+                        <% if can? :create, Bikeadv %>
+                            <%= link_to "Create an advertisement", new_user_bikeadv_path(@user.id), 
+                            role: "button", class: "btn btn-lg btn-primary text-nowrap col-5", style: "border:2px solid rgba(0,0,0,0.2);
+                            border-radius:12px;
+                            background-color:red;
+                            border-bottom-color:black;
+                            background-image: red;
+                            text-decoration: none;
+                            color:aliceblue;
+                            font-size: medium;;
+                            border-color: black;
+                            maring-left:5%;"%>
+                        <% end %>
+                    </div><br>
+                    <div class="d-inline-block gap-2">
+                        <% if can? :findadv, Bikeadv %>
+                            <%= link_to "Rally bulletin ", findadv_user_bikesellingadvs_path(@user.id), 
+                            role: "button", class: "btn btn-lg btn-primary text-nowrap col-5", style: "border:2px solid rgba(0,0,0,0.2);
+                            border-radius:12px;
+                            background-color: red;
+                            border-bottom-color:black;
+                            background-image:red;
+                            text-decoration: none;
+                            color:aliceblue;
+                            font-size: medium;;
+                            border-color: black;
+                            margin-right:5%"%>
+                        <% end %>
+                        <% if can? :index, Bikeadv %>
+                            <%= link_to "Your advertisements", user_bikeadvs_path(@user.id),
+                            role: "button", class: "btn btn-lg btn-primary text-nowrap col-5", style: "border:2px solid rgba(0,0,0,0.2);
+                            border-radius:12px;;
+                            background-color: red;
+                            border-bottom-color:black;
+                            background-image:red;
+                            text-decoration: none;
+                            color:aliceblue;
+                            font-size: medium;
+                            border-color: black;
+                            maring-left:5%;"%>
+                        <% end %>
+                    </div>
+                    <% if current_user.is_banned?%>
+                        <p class="text-center"><h2 style="color: aliceblue;">You have been banned for misconduct</h2></p>
+                    <% end %>
+                </div>
+                <br>
+                <div class="d-grid gap-2 col-6 mx-auto" id="admin-only">
+                    <% if can? :index, User %>
+                        <%= link_to "See users profiles", users_path, 
+                        role: "button", class: "btn btn-lg btn-primary text-nowrap", style: "border:2px solid rgba(0,0,0,0.2);
+                            border-radius:12px;
+                            background-color: red;
+                            border-bottom-color:black;
+                            background-image: linear-gradient( rgba(176,196, 222,0.5), rgba(176,196, 222,0.2) 45%, rgb(0, 0, 0) 51%, rgb(0, 0, 0));
+                            text-decoration: none;
+                            color:lavender;
+                            font-size: medium;;
+                            border-color: #f50057;
+                            margin-top:5%;
+                            
+                            "%>
+                    <% end %>
+                </div>
+            </div>
+     
+        <br>
+        <footer class="text-center text-lg-start" style="color: aliceblue;">
+            <div class="container p-4">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Get to know us</h5>
+                        <p>
+                            Created by <a href="https://github.com/Eleonora99" style="color: aliceblue;">E</a>&<a
+                                href="https://github.com/Elisableah" style="color: aliceblue;">E</a>.
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Need Help?</h5>
+                        <p>
+                            You can contact us via <a
+                                href="mailto:fornaro.1836820@studenti.uniroma1.it,getachew.1794877@studenti.uniroma1.it"
+                                style="color: aliceblue;">E-mail</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+<% end %>

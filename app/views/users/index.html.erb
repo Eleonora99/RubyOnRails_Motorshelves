@@ -1,0 +1,105 @@
+<head>
+    <title>Motorshelves - Bike-selling advs</title>
+</head>
+<style>
+ @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Righteous&display=swap');
+ .container{
+ font-family: 'Righteous', cursive;
+ }
+</style>
+<body style="background-color: rgb(25,25,25);">
+    <br>
+    <div class="container">
+        <p class="h2" style="color: aliceblue">Users profiles List</p>
+        <br>
+        <table class="table" style="color: aliceblue;">
+            <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col" style="text-align: center;">See</th>
+                  <th scope="col" style="text-align: center;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+             <% @users.each do |user| %>
+              <tr>
+              <% if user.id!=current_user.id %>
+                <td><%= user.firstname %></td>
+                <td><%= user.email %></td>
+                <td style="text-align: center;">
+                <%= link_to "See bike advertisements", user_bikeadvs_path(user.id), class:"btn btn-primary",  style:"border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5), red 45%, red 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;" %>
+                <%= link_to "See rally advertisments", user_bikesellingadvs_path(user.id), class:"btn btn-primary",  style:"border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5), red 45%, red 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;" %>
+                </td><td style="text-align: center;">
+                <% if user.is_banned? %> 
+                  <%= link_to "Remove Ban", unban_user_path(user.id), method: :get, data: { confirm: "Are you sure?" }, class:"btn btn-primary", type:"button", style:"border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5), #78909c 45%, #78909c 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;" %>
+                <% else %>
+                  <%= link_to "Ban", ban_user_path(user.id), method: :get, data: { confirm: "Are you sure?" }, class:"btn btn-primary", type:"button", style:"border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5), #78909c 45%, #78909c 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;" %>
+                <% end %>
+                <% if user.is_admin? %> 
+                  <%= link_to "Remove Admin", unadmin_user_path(user.id), method: :get, data: { confirm: "Are you sure?" }, class:"btn btn-primary", type:"button", style:"border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5), #78909c 45%, #78909c 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;" %>
+                <% else %>
+                  <%= link_to "Make Admin", admin_user_path(user.id), method: :get, data: { confirm: "Are you sure?" }, class:"btn btn-primary", type:"button", style:"border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5), #78909c 45%, #78909c 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;" %>
+                <% end %>
+                </td>
+              <% end %> 
+              </tr>
+            <% end %>
+            </tbody>
+        </table>
+        <div class="d-grid gap-2 mx-auto">
+            <div class="d-inline-block gap-2 mx-auto">
+            <%= link_to "Homepage", root_path, class:"btn btn-lg btn-secondary text-nowrap", style:"border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5), black 45%, black 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;" %>
+            </div>
+        </div>
+    </div>
+</body>
