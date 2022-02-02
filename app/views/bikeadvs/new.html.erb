@@ -1,0 +1,96 @@
+<head>
+  <title>Motorshelves</title>
+</head>
+<style>
+ @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Righteous&display=swap');
+ .container{
+ font-family: 'Righteous', cursive;
+ }
+</style>
+<body style="background-color: rgb(25, 25, 25);">
+    <div class="container">
+        <br>
+        <div class="row">
+            <p class="h2" style="color: aliceblue;">
+                Create a Bike advertisement
+            </p>
+        </div>
+        <%= form_with model: [ current_user, current_user.bikeadvs.build ] do |form| %>
+            <br><br>
+            <div class="input-group mb-3">
+              <%= form.label :scuderia, "Scuderia", class:"input-group-text" %>
+              <%= form.text_field :scuderia,  class:"form-control", placeholder:"Ducati, Honda, Yamaha..",
+                    aria_label:"Ducati, Honda, Yamaha etc...", aria_describedby:"basic-addon2", required:"true"%>
+            </div>
+
+            <div class="input-group mb-3">
+                  <%= form.label :modello, "Modello", class:"input-group-text"%>
+                <%= form.text_field :modello, class:"form-control", required:"true", placeholder:"Chopper, Cross..." %>
+                <%= form.label :cilindrata, "Cilindrata", class:"input-group-text"%>
+                <%= form.text_field :cilindrata, class:"form-control", required:"true", placeholder:"150cc, 300cc,  etc..."%>
+            </div>
+
+            <div class="input-group mb-3">
+            <%= form.label :anno, "anno", class:"input-group-text"%>
+            <%= form.number_field :anno, class:"form-control", aria_label:"anno", placeholder:"2005,2012,2020, etc..." %>
+            </div>
+            <br>
+            <div class="btn-toolbar justify-content-between mb-3" role="toolbar">
+                <div class="btn-group mb-3" role="group">
+                <%= form.label :image, "Identity Photo",  class:"input-group-text" %>
+                <%= form.file_field :image, role:"button",  class:"btn btn-primary", style:"
+					border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5), red 45%, red 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;"%>
+                </div>
+                <div class="input-group mb-3">
+                <%= form.label :city, class:"input-group-text" %>
+                <%= form.text_field :city, class:"form-control", aria_label:"City", placeholder:"Pisa, Venezia, Roma, etc..." %>
+                </div>
+            </div>
+            <div class="input-group">
+              <%= form.label :advices, class:"input-group-text" %>
+              <%= form.text_area :advices , class:"form-control", aria_label:"description", placeholder:"Specify if your bikes needs some kind of attentions"%>
+            </div>
+            <br>
+            <div class="input-group">
+              <%= form.label :description, "Bike's Description", class:"input-group-text"%>
+              <%= form.text_area :description, class:"form-control", aria_label:"description", placeholder:"Most important charateristics about your bike..." %>
+            </div>
+            <br>
+            <div class="d-grid gap-2 mx-auto">
+                <div class="d-inline-block gap-2 mx-auto">
+                  <%= form.submit "Create", class:"btn btn-lg btn-primary text-nowrap", style:"border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5), red 45%, red 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;"%>  
+                  <%= link_to "Create a rally advertisement", new_user_bikesellingadv_path(current_user.id), role:"button", class:"btn btn-lg btn-primary text-nowrap", style:"border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5),  #78909c 45%,  #78909c 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;" %>  
+                  <%= link_to "Back", root_path, role:"button", class:"btn btn-lg btn-secondary text-nowrap", style:"border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5), black 45%, black 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;" %>
+                </div>
+            </div>
+          <% end %>
+    </div>
+</body>

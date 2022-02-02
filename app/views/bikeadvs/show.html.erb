@@ -1,0 +1,75 @@
+<html lang="en">
+<style>
+ @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Righteous&display=swap');
+ .container{
+ font-family: 'Righteous', cursive;
+ }
+</style>
+<head>
+    <title>Motorshelves</title>
+</head>
+
+<body style="background-color: rgb(25, 25, 25);">
+    <br>
+    <div class="container">
+        <p class="h2" style="color: aliceblue">Bike's details</p>
+        <div class="row">
+            <div class="col-3">
+            <% if @bikeadv.image.attached? %>
+              <%= image_tag @bikeadv.image, class:"img-thumbnail", style:" float:right; border: 1px solid rgb(25, 25, 25);"  %>
+            <% end %>
+            </div>
+            <div class="col-7">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" style="color: aliceblue; background-color: rgb(25, 25, 25);">Scuderia: <%= @bikeadv.scuderia %></li>
+                    <li class="list-group-item" style="color: aliceblue; background-color: rgb(25, 25, 25);">Modello: <%= @bikeadv.modello %></li>
+                    <li class="list-group-item" style="color: aliceblue; background-color: rgb(25, 25, 25);">Cilindrata: <%= @bikeadv.cilindrata %></li>
+                    <li class="list-group-item" style="color: aliceblue; background-color: rgb(25, 25, 25);">Anno: <%= @bikeadv.anno %></li>
+                    <li class="list-group-item" style="color: aliceblue; background-color: rgb(25, 25, 25);">City: <%= @bikeadv.city %></li>
+                    <li class="list-group-item" style="color: aliceblue; background-color: rgb(25, 25, 25);">Owner's name: <%= @bikeadv.user.firstname %></li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-text">Description</span>
+            <textarea class="form-control" aria-label="Description" disabled><%= @bikeadv.description %></textarea>
+        </div>
+        <div class="input-group">
+            <span class="input-group-text">Important advices</span>
+            <textarea class="form-control" aria-label="Description" disabled ><%= @bikeadv.advices %></textarea>
+        </div>
+        <br>
+        <div class="d-grid gap-2 mx-auto">
+            <div class="d-inline-block gap-2 mx-auto">
+                <%= link_to "Homepage", root_path, class:"btn btn-lg btn-primary text-nowrap", style:"border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5), red 45%, red 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;" %>
+                <%= link_to "Back", :back, type:"button", class:"btn btn-lg btn-secondary text-nowrap", style:"border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5), black 45%, black 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;" %>
+
+                <a href=<%= "mailto:#{@bikeadv.user.email}?subject=AFeDT%3A%20#{@bikeadv.modello}'s%20adv "%>><button class="btn btn-lg btn-primary text-nowrap" style="
+                        border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5), red 45%, red 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;">Write to the owner</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+

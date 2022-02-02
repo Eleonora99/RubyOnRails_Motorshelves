@@ -1,0 +1,90 @@
+<head>
+    <title>Motorshelves- Bike advertisements</title>
+</head>
+<style>
+ @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Righteous&display=swap');
+ .container{
+ font-family: 'Righteous', cursive;
+ }
+</style>
+<body style="background-color: rgb(25,25,25);">
+    <br>
+    <div class="container">
+        <p class="h2" style="color: aliceblue">Bike advertisements List</p>
+        <br>
+        <table class="table" style="color: aliceblue;">
+            <thead>
+                <tr>
+                  <th scope="col">Scuderia</th>
+                  <th scope="col">modello</th>
+                  <th scope="col">City</th>
+                  <th scope="col" style="text-align: center;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+              <% @bikeadvs.each do |bikeadv| %>
+              <tr>
+                <td><%= bikeadv.scuderia %></td>
+                <td><%= bikeadv.modello %></td>
+                <td><%= bikeadv.city %></td>
+                <td style="text-align: center;">
+                <% if current_user.id == bikeadv.user_id %>
+                <%= link_to "Edit", edit_user_bikeadv_path(bikeadv.user,bikeadv), class:"btn btn-primary",  style:"border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5), red 45%, red 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;"%>
+                <% else %>
+                <%= link_to "Show", user_bikeadv_path(bikeadv.user,bikeadv), class:"btn btn-primary", type:"button", style:"background-color: #78909c;border-color: #78909c" %>
+                <% end %>
+                <%= link_to "Destroy", user_bikeadv_path(bikeadv.user,bikeadv.id), method: :delete,
+                  data: { confirm: "Are you sure?" }, class:"btn btn-primary", type:"button", style:"border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5),  #78909c 45%,  #78909c 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;" %>
+                </td>
+              </tr>
+               <% end %> 
+            </tbody>
+        </table>
+        <div class="d-grid gap-2 mx-auto">
+            <div class="d-inline-block gap-2 mx-auto">
+            <% if current_user.id != params[:user_id].to_i %>
+              <%= link_to "Back", :back, class:"btn btn-lg btn-primary text-nowrap", style:"border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5), black 45%, black 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;"%>
+            <% else %>
+              <%= link_to "Your rally advertisement", user_bikesellingadvs_path(current_user.id), class:"btn btn-lg btn-secondary text-nowrap", style:"border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5), red 45%, red 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;" %>
+            <% end %>
+              <%= link_to "Homepage", root_path, class:"btn btn-lg btn-primary text-nowrap", class:"btn btn-lg btn-secondary text-nowrap", style:"border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5), red 45%, red 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;"%>
+            </div>
+        </div>
+    </div>
+</body>
+
