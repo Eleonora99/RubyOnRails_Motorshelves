@@ -1,0 +1,66 @@
+<head>
+    <title>motorshelves - Bike-selling advertisement</title>
+</head>
+<style>
+ @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Righteous&display=swap');
+ .container{
+ font-family: 'Righteous', cursive;
+ }
+</style>
+<body style="background-color: rgb(25, 25, 25);">
+    <div class="container">
+        <br>
+        <div class="row">
+            <p class="h2" style="color: aliceblue;">
+                Create a bike selling advertisement
+            </p>
+        </div>
+        <%= form_with model: [ current_user, current_user.bikesellingadvs.build ] do |form| %>
+            <br><br>
+
+            <div class="input-group mb-3">
+                <%= form.label :start_date, "From", class:"input-group-text" %>
+                <%= form.date_select :start_date, start_year:Date.today.year, class:"form-control", required:"true" %>
+            </div>
+            
+            <div class="input-group mb-3">
+              <%= form.label :end_date, "To", class:"input-group-text" %>
+              <%= form.date_select :end_date, start_year:Date.today.year, class:"form-control", required:"true" %>
+            </div>
+            <div class="input-group mb-3">
+                <%= form.label :city, class:"input-group-text" %>
+                <%= form.text_field :city, class:"form-control", aria_label:"City", placeholder:"Pisa, Venezia, Roma, etc..." %>
+            </div>
+
+            <br>
+            <div class="d-grid gap-2 mx-auto">
+                <div class="d-inline-block gap-2 mx-auto">
+                    <%= form.submit "Create", class:"btn-lg btn-primary text-nowrap", style:"border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5), red 45%, red 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;"%>
+                    <%= link_to "Create a bike advertisement", new_user_bikeadv_path(current_user.id), role:"button", class:"btn btn-lg btn-primary text-nowrap", style:"border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5),  #78909c 45%,  #78909c 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;" %>
+                    <%= link_to "Homepage", root_path, role:"button", class:"btn btn-lg btn-secondary text-nowrap", style:"border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5), black 45%, black 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;" %>
+                </div>
+            </div>
+         <% end %>
+    </div>
+</body>
