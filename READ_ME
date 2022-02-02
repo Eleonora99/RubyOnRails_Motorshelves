@@ -1,0 +1,48 @@
+Laboratory of Software Architecture and IT Security 2021
+project name:
+ Motorshelves
+Participants: Eleonora Fornaro, Elisabeth Getachew
+
+General description:
+
+Motorshelves is a web application that allows you to search, sell or buy motorcycles through
+authorized or private resellers. Users interested in selling or buying also have the option
+to organize rallies (gatherings) by communicating it to other users by creating an announcement in the
+which date and place of the meeting are specified.
+
+Intended roles and functions offered to them:
+
+• Administrator: is able to perform any action, in particular has access to all
+functionalities concerning user management: can remove, suspend and modify the
+status of anyone in addition to having access to edit and remove ads.
+All those reported for users are also included in the list of admin actions.
+
+•User: can create, edit, delete or search for advertisements on motorcycles.
+You have the option of contacting the user of the ad concerned by email
+and can create or search for announcements of gatherings where to sell or buy.
+
+Access mode:
+Unregistered users can sign-up via a standard, internal registration form
+to the website, or log in externally using Facebook as a provider
+
+Description of managed data:
+
+The data managed by the web application concern the following entities:
+
+•Private user: during internal registration, the application prompts the user to enter
+of name, surname, gender, date of birth, email and password.
+In the login provided by Facebook all information is provided by
+provider.
+
+•Sale announcement (Bike advertisment): so that the announcement is clear and complete to the user
+it is required to enter the make (“stable”), model, engine capacity, year and
+residence of the motorbike, finally it is possible to insert an image, advice and
+a description regarding the latter.
+
+•Rally announcement (Selling rally): when creating the announcement ("Bike-rally
+advs ") the user is asked for the dates and place of the meeting.
+
+Interaction with external services:
+
+To facilitate and speed up the registration / login process, interaction with the
+Facebook provider.
