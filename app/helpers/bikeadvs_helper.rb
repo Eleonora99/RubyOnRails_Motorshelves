@@ -1,0 +1,2 @@
+module BikeadvsHelper
+end
