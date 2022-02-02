@@ -1,0 +1,55 @@
+<head>
+    <style>
+        .masthead {
+            height: 100vh;
+            max-height: 500px;
+            background-image: url(<%= asset_path "foto1.jpg" %>);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-origin: content-box;
+        }
+    </style>
+    <title>Motorshelves - Sign up</title>
+</head>
+
+<body style="background-color: rgb(25, 25, 25);">
+
+    <header class="masthead"></header>
+    <br>
+    <section class="py-5">
+        <div class="container">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+
+            <div class="input-group mb-3">
+              <%= f.label :email, class:"input-group-text"%>
+              <%= f.email_field :email, class:"form-control", autofocus: true, placeholder: "john.smith@provider.com", aria_label:"E-Mail", required:true%>
+            </div>
+
+            <div class="input-group mb-3">
+              <%= f.label :password, class:"input-group-text"%>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, class:"form-control", placeholder: "Type in your password...", aria_label:"Password", required:true%>
+              <%= f.label :password_confirmation, class:"input-group-text"%>
+              <%= f.password_field :password_confirmation, class:"form-control",placeholder:"Type in your password...", aria_label:"Confirm password", required:true %>
+            </div>
+            <br>
+            <div class="d-grid gap-2 col-3 mx-auto">
+              <%= f.submit "Sign up", class:"btn btn-primary",  style:"border:2px solid rgba(0,0,0,0.2);
+					border-radius:12px;
+					background-color: rgb(24, 23, 23);
+					border-bottom-color:black;
+					background-image: linear-gradient( rgba(176,196, 222,0.5), red 45%, red 51%, rgb(0, 0, 0));
+					text-decoration: none;
+					color:lavender;
+					font-size: medium;" %>
+            </div>
+          <% end %>
+               
+            
+        </div>
+    </section>
+</body>
