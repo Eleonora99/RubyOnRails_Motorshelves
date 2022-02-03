@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  scuderia: MyString
+  modello: MyString
+  cilindrata: MyString
+  anno: 1
+  city: MyString
+  description: MyText
+  advices: MyText
+  user: one
+
+two:
+  scuderia: MyString
+  modello: MyString
+  cilindrata: MyString
+  anno: 1
+  city: MyString
+  description: MyText
+  advices: MyText
+  user: two
