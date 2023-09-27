@@ -8,6 +8,7 @@ Motorshelves è un’ applicazione web che permette di cercare, vendere o acquis
 rivenditori autorizzati o privati. Gli utenti interessati a vendere o acquistare hanno anche la possibilità
 di organizzare dei rally (raduni) comunicandolo agli altri utenti tramite la creazione di un annuncio nel
 quale vengono specificati data e luogo dell’incontro.
+
 Ruoli previsti e funzionalità ad essi offerte:
 • Amministratore: è in grado di effettuare qualsiasi azione, in particolare ha accesso a tutte le
 funzionalità riguardanti la gestione degli utenti: può rimuovere, sospendere e modificare lo
